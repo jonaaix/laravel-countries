@@ -418,8 +418,7 @@ class Country extends CountryModel
      */
     public function getGeoData()
     {
-        return $this->geographical()->first()->getGeoData();
-
+        return $this->geographical()->first()?->getGeoData();
     }
 
     /**

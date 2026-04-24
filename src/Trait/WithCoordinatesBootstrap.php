@@ -186,8 +186,8 @@ KML;
         $coordinates = $this->coordinatesInDecimal();
         $latitude = (float) $coordinates['latitude'];
         $longitude = (float) $coordinates['longitude'];
-        $placename = $this->translate($locale)->name ?? $this->official_name;
-        $region = $this->region()->first()->translate($locale)->name ?? '';
+        $placename = $this->translate($locale)?->name ?? $this->official_name;
+        $region = $this->region()->first()?->translate($locale)?->name ?? '';
 
         return '<meta name="geo.position" content="' . number_format($latitude, 6) . '; ' . number_format($longitude, 6) . '">' . PHP_EOL .
             '<meta name="geo.placename" content="' . htmlspecialchars($placename) . '">' . PHP_EOL .

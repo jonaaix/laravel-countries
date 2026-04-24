@@ -32,7 +32,7 @@ trait HasWhereDomain
         $domainsInLowercase = array_map(fn($lang) => Str::lower($lang), $domains);
         return $query->where(function (Builder $query) use ($domainsInLowercase) {
             foreach ($domainsInLowercase as $domain) {
-                $query->whereJsonContains('tld', $domain);
+                $query->orWhereJsonContains('tld', $domain);
             }
         });
     }
@@ -62,7 +62,7 @@ trait HasWhereDomain
         $domainsInLowercase = array_map(fn($lang) => Str::lower($lang), $domains);
         return $query->where(function (Builder $query) use ($domainsInLowercase) {
             foreach ($domainsInLowercase as $domain) {
-                $query->whereJsonContains('alternative_tld', $domain);
+                $query->orWhereJsonContains('alternative_tld', $domain);
             }
         });
     }

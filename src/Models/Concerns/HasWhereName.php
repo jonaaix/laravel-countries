@@ -41,7 +41,7 @@ trait HasWhereName
      */
     public function scopeWhereNameLike($query, string $name): Builder
     {
-        $query->whereTranslationLike('name', '% ' . $name . '%');
+        $query->whereTranslationLike('name', '%' . $name . '%');
         return $query;
     }
 
@@ -54,7 +54,7 @@ trait HasWhereName
      */
     public function scopeOrWhereNameLike($query, string $name): Builder
     {
-        $query->orWhereTranslationLike('name', '% ' . $name . '%');
+        $query->orWhereTranslationLike('name', '%' . $name . '%');
         return $query;
     }
 
