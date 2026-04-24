@@ -66,49 +66,9 @@ A country-data package should do exactly two things: **create the tables** and *
 
 ## Migrating from `lwwcas/laravel-countries`
 
-The two packages share the same 7-table schema, the same Eloquent models, the same query scopes, and the same country data. Migrating is mostly a namespace swap plus forgetting about the two install commands.
+Same 7-table schema, same Eloquent models, same query scopes, same country data. Migration is mostly a namespace swap — see the step-by-step guide in the docs:
 
-**1. Swap the composer package:**
-
-```bash
-composer remove lwwcas/laravel-countries
-composer require aaix/laravel-countries
-```
-
-**2. Rename the namespace in your app code:**
-
-```diff
-- use Lwwcas\LaravelCountries\Models\Country;
-+ use Aaix\LaravelCountries\Models\Country;
-```
-
-A project-wide find-and-replace of `Lwwcas\LaravelCountries` → `Aaix\LaravelCountries` catches it all. The `WCountries` facade alias is preserved, so calls via the facade keep working.
-
-**3. Run migrations:**
-
-```bash
-php artisan migrate
-```
-
-Your existing tables stay as they are — this adds one new column (`native_name`) on `lc_countries`. No data loss.
-
-**4. Update your seeder call:**
-
-```diff
-  public function run(): void
-  {
--     $this->call(\Lwwcas\LaravelCountries\Database\Seeders\LwwcasDatabaseSeeder::class);
-+     $this->call(\Aaix\LaravelCountries\Database\Seeders\DatabaseSeeder::class);
-  }
-```
-
-The new master seeder runs regions + 245 countries + all 9 languages + native names in one pass. It's now idempotent — safe to re-run on every deploy.
-
-**5. Drop the old Artisan commands:**
-
-`php artisan w-countries:install` and `php artisan w-countries:languages` are gone. Anything you had wired into `Procfile`, deploy scripts, or CI hooks that invoked them can be replaced with `php artisan db:seed`.
-
-That's it. All your existing queries (`Country::whereIso(...)`, `Country::whereCurrency(...)`, flag helpers, global scopes) work unchanged.
+**→ [Migrating from lwwcas](https://jonaaix.github.io/laravel-countries/migrating)**
 
 ## Usage
 
