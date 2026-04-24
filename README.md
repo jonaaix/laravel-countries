@@ -34,31 +34,11 @@ Migrations load automatically via the package service provider.
 
 ## Seed
 
-You get 5 regions, 245 countries, 9 language translations (ar, de, en, es, fr, it, nl, pt, ru) and the `native_name` column populated in one idempotent pass. Re-running the seeder is safe: every write is an `updateOrCreate` keyed on ISO code / locale — stable primary keys, no duplicates, no unique-key violations.
-
-### Option A — Run it once, by hand
-
-If you just want to populate country data and be done with it, run the master seeder directly:
-
 ```bash
 php artisan db:seed --class="Aaix\\LaravelCountries\\Database\\Seeders\\DatabaseSeeder"
 ```
 
-That's it. No changes to your app's `DatabaseSeeder.php`, no `vendor:publish`, nothing to remember next time. Safe to re-run whenever you want to refresh the data (e.g. after a package update).
-
-### Option B — Integrate into your deploy pipeline
-
-If you want country data to stay in sync automatically across deploys, call the master seeder from your app's own `database/seeders/DatabaseSeeder.php`:
-
-```php
-public function run(): void
-{
-    $this->call(\Aaix\LaravelCountries\Database\Seeders\DatabaseSeeder::class);
-    // your own seeders here
-}
-```
-
-Then your normal `php artisan db:seed` (or `db:seed --force` in CI) runs country data alongside everything else. Because every write is idempotent, running it on every deploy is safe.
+Seeds 5 regions, 245 countries, 9 language translations and the `native_name` column. Idempotent — safe to re-run. See [Seeding](https://jonaaix.github.io/laravel-countries/seeding) for deploy-pipeline integration.
 
 ## Principle
 
