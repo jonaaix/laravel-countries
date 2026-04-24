@@ -131,12 +131,13 @@ trait WithCoordinatesBootstrap
         $decimalCoordinates = $this->coordinatesInDecimal();
         $latitude = (float) $decimalCoordinates['latitude'];
         $longitude = (float) $decimalCoordinates['longitude'];
+        $name = htmlspecialchars((string) $this->official_name, ENT_QUOTES | ENT_XML1, 'UTF-8');
 
         return <<<KML
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
     <Placemark>
-        <name>{$this->official_name}</name>
+        <name>{$name}</name>
         <description>{$latitude},{$longitude}</description>
         <Point>
             <coordinates>{$longitude},{$latitude}</coordinates>
