@@ -19,6 +19,17 @@ class CountryFactory extends Factory
     protected $model = Country::class;
 
     /**
+     * Monotonic counter used to mint deterministic, collision-free ISO codes
+     * for factory-generated countries. Reset between tests via resetSequence().
+     */
+    protected static int $isoSequence = 0;
+
+    public static function resetSequence(): void
+    {
+        static::$isoSequence = 0;
+    }
+
+    /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
@@ -27,6 +38,7 @@ class CountryFactory extends Factory
     {
         $name = fake()->country() . ' ' . fake()->word(). rand(1, 9999);
         $colors = $this->randomColors();
+        [$iso2, $iso3] = $this->nextIsoCodes();
 
         return [
             'lc_region_id' => fn () => CountryRegionFactory::new()->create()->id,
@@ -34,8 +46,8 @@ class CountryFactory extends Factory
 
             'official_name' => Str::title($name),
             'capital' => 'Capital ' . Str::title($name),
-            'iso_alpha_2' => fake()->countryCode(),
-            'iso_alpha_3' => fake()->countryISOAlpha3(),
+            'iso_alpha_2' => $iso2,
+            'iso_alpha_3' => $iso3,
             'iso_numeric' => fake()->randomNumber(3, false),
 
             'international_phone' => fake()->randomNumber(3, true),
@@ -95,6 +107,22 @@ class CountryFactory extends Factory
 
             'is_visible' => true,
         ];
+    }
+
+    /**
+     * Generate deterministic, collision-free [alpha-2, alpha-3] codes from the
+     * internal counter. 26×26 = 676 unique alpha-2 values before wraparound,
+     * which resetSequence() handles via the TestCase setUp hook.
+     *
+     * @return array{0: string, 1: string}
+     */
+    protected function nextIsoCodes(): array
+    {
+        $n = static::$isoSequence++;
+        $alpha2 = chr(65 + intdiv($n, 26) % 26) . chr(65 + $n % 26);
+        $alpha3 = $alpha2 . chr(65 + intdiv($n, 676) % 26);
+
+        return [$alpha2, $alpha3];
     }
 
     /**
