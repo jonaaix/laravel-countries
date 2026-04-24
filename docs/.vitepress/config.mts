@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: 'aaix/laravel-countries',
-  description: 'Modernized Laravel country-data package — idempotent seeders, zero-touch install, ergonomic API.',
+  description: 'A modern Laravel country-data package — idempotent seeders, zero-touch install, ergonomic API.',
   base: '/laravel-countries/',
   lastUpdated: true,
   cleanUrls: true,

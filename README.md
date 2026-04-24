@@ -7,7 +7,7 @@
 <h1 align="center">Laravel Countries</h1>
 
 <p align="center">
-Modernized country-data package for Laravel — idempotent seeders, zero-touch install, ergonomic API.
+A modern Laravel country-data package — idempotent seeders, zero-touch install, ergonomic API.
 </p>
 
 <p align="center">

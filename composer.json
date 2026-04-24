@@ -1,6 +1,6 @@
 {
     "name": "aaix/laravel-countries",
-    "description": "Modernized Laravel country-data package: idempotent seeders, zero-touch install, no interactive commands. Opinionated fork of lwwcas/laravel-countries.",
+    "description": "A modern Laravel country-data package: idempotent seeders, zero-touch install, no interactive commands. Opinionated fork of lwwcas/laravel-countries.",
     "type": "library",
     "license": "MIT",
     "minimum-stability": "dev",
