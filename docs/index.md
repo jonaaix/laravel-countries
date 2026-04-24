@@ -4,7 +4,7 @@ layout: home
 hero:
   name: "Laravel Countries"
   text: "Country data for Laravel, done right."
-  tagline: "Idempotent seeders. Zero-touch install. Ergonomic API. A 2026 lift of lwwcas/laravel-countries."
+  tagline: "Idempotent seeders. Zero-touch install. Ergonomic API."
   image:
     src: /logo.webp
     alt: Laravel Countries Logo
@@ -26,3 +26,7 @@ features:
   - title: Drop-in Eloquent feel
     details: "Country::getByCode('DE'), $country->nameInLang('ja'), Country::listInLang('de') — plus all the whereIso / whereCurrency / whereBorders scopes from upstream."
 ---
+
+<p style="text-align: center; margin-top: 3rem; opacity: 0.7; font-size: 0.9rem;">
+Opinionated fork of <a href="https://github.com/lwwcas/laravel-countries">lwwcas/laravel-countries</a>.
+</p>
