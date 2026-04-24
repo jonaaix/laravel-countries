@@ -2,7 +2,7 @@ name: Deploy VitePress docs to GitHub Pages
 
 on:
   push:
-    branches: [master]
+    branches: [main]
     paths:
       - 'docs/**'
       - 'package.json'

@@ -57,7 +57,7 @@ export default defineConfig({
     },
 
     editLink: {
-      pattern: 'https://github.com/jonaaix/laravel-countries/edit/master/docs/:path',
+      pattern: 'https://github.com/jonaaix/laravel-countries/edit/main/docs/:path',
       text: 'Edit this page on GitHub',
     },
   },

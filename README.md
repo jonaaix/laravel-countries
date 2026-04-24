@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/jonaaix/laravel-countries">
-    <img src="https://raw.githubusercontent.com/jonaaix/laravel-countries/master/assets/laravel-countries.webp" alt="Laravel Countries Logo" width="120">
+    <img src="https://raw.githubusercontent.com/jonaaix/laravel-countries/main/assets/laravel-countries.webp" alt="Laravel Countries Logo" width="120">
   </a>
 </p>
 
@@ -17,8 +17,8 @@ Opinionated fork of <a href="https://github.com/lwwcas/laravel-countries">lwwcas
 <p align="center">
   <a href="https://packagist.org/packages/aaix/laravel-countries"><img src="https://img.shields.io/packagist/v/aaix/laravel-countries.svg?style=flat-square" alt="Latest Version on Packagist"></a>
   <a href="https://packagist.org/packages/aaix/laravel-countries"><img src="https://img.shields.io/packagist/dt/aaix/laravel-countries.svg?style=flat-square" alt="Total Downloads"></a>
-  <a href="https://github.com/jonaaix/laravel-countries/actions/workflows/tests.yml"><img src="https://img.shields.io/github/actions/workflow/status/jonaaix/laravel-countries/tests.yml?branch=master&label=tests&style=flat-square" alt="GitHub Actions"></a>
-  <a href="https://github.com/jonaaix/laravel-countries/blob/master/LICENSE.md"><img src="https://img.shields.io/packagist/l/aaix/laravel-countries.svg?style=flat-square" alt="License"></a>
+  <a href="https://github.com/jonaaix/laravel-countries/actions/workflows/tests.yml"><img src="https://img.shields.io/github/actions/workflow/status/jonaaix/laravel-countries/tests.yml?branch=main&label=tests&style=flat-square" alt="GitHub Actions"></a>
+  <a href="https://github.com/jonaaix/laravel-countries/blob/main/LICENSE.md"><img src="https://img.shields.io/packagist/l/aaix/laravel-countries.svg?style=flat-square" alt="License"></a>
 </p>
 
 ---
