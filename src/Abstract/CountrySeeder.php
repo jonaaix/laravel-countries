@@ -1,9 +1,9 @@
 <?php
 
-namespace Lwwcas\LaravelCountries\Abstract;
+namespace Aaix\LaravelCountries\Abstract;
 
 use Illuminate\Database\Seeder;
-use Lwwcas\LaravelCountries\Contracts\CountrySeedInterface;
+use Aaix\LaravelCountries\Contracts\CountrySeedInterface;
 
 abstract class CountrySeeder extends Seeder implements CountrySeedInterface
 {

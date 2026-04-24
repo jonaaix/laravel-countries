@@ -1,10 +1,10 @@
 <?php
 
-namespace Lwwcas\LaravelCountries\Database\Factories;
+namespace Aaix\LaravelCountries\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Lwwcas\LaravelCountries\Database\Factories\CountryFactory;
-use Lwwcas\LaravelCountries\Models\CountryGeographical;
+use Aaix\LaravelCountries\Database\Factories\CountryFactory;
+use Aaix\LaravelCountries\Models\CountryGeographical;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>

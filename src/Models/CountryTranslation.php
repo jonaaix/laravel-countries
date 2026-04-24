@@ -1,6 +1,6 @@
 <?php
 
-namespace Lwwcas\LaravelCountries\Models;
+namespace Aaix\LaravelCountries\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -30,6 +30,8 @@ class CountryTranslation extends Model
      * @var array
      */
     protected $fillable = [
+        'lc_country_id',
+        'locale',
         'slug',
         'name',
     ];

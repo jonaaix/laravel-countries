@@ -1,6 +1,6 @@
 <?php
 
-namespace Lwwcas\LaravelCountries\Enum;
+namespace Aaix\LaravelCountries\Enum;
 
 enum GpsFormatEnum: string
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Lwwcas\LaravelCountries\Trait;
+namespace Aaix\LaravelCountries\Trait;
 
-use Lwwcas\LaravelCountries\Facades\FlagEmoji;
+use Aaix\LaravelCountries\Facades\FlagEmoji;
 
 trait WithOnlyWhereFunctions
 {
@@ -79,7 +79,7 @@ trait WithOnlyWhereFunctions
     /**
      * Get a list of flag emojis.
      *
-     * @return \Lwwcas\LaravelCountries\Facades\FlagEmoji
+     * @return \Aaix\LaravelCountries\Facades\FlagEmoji
      */
     public function onlyFlag()
     {
@@ -92,7 +92,7 @@ trait WithOnlyWhereFunctions
      * This method return a list of country flag emojis.
      * The list is cached for a long time to avoid to query the database too much.
      *
-     * @return \Lwwcas\LaravelCountries\Facades\FlagEmoji
+     * @return \Aaix\LaravelCountries\Facades\FlagEmoji
      */
     public function onlyEmoji()
     {

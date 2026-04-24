@@ -1,87 +1,128 @@
-
-<p  align="center">
-    <img src="./docs/assets/hero-map.webp" alt="Hero Map"style="padding-top:15px;">
+<p align="center">
+  <a href="https://github.com/jonaaix/laravel-countries">
+    <img src="https://raw.githubusercontent.com/jonaaix/laravel-countries/master/assets/laravel-countries.webp" alt="Laravel Countries Logo" width="120">
+  </a>
 </p>
 
-<p>
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/v/release/lwwcas/laravel-countries?style=flat-square&color=%23ff6f30" alt="release" style=" float: left; padding-right:15px;">
+<h1 align="center">Laravel Countries</h1>
 
-<img decoding="async" loading="lazy" src="https://img.shields.io/github/repo-size/lwwcas/laravel-countries?label=size&amp;style=flat-square&color=%23ff6f30" alt="size" style=" float: left; padding-right:15px;">
-
-<img alt="Packagist Downloads" src="https://img.shields.io/packagist/dt/lwwcas/laravel-countries?style=flat-square&color=%23ff6f30" style=" float: left; padding-right:15px;">
-
-<img alt="Packagist Stars" src="https://img.shields.io/packagist/stars/lwwcas/laravel-countries?style=flat-square&color=%23ff6f30" style=" float: left; padding-right:15px;">
-
-<img alt="Packagist License" src="https://img.shields.io/packagist/l/lwwcas/laravel-countries?style=flat-square&color=%23ff6f30" style=" float: left; padding-right:15px;">
-
+<p align="center">
+Modernized country-data package for Laravel — idempotent seeders, zero-touch install, ergonomic API. 2026 lift of <a href="https://github.com/lwwcas/laravel-countries">lwwcas/laravel-countries</a>.
 </p>
 
-### [Full Documentation](https://lwwcas.github.io/laravel-countries/)
-
-<br>
-
-## Very short description
-
-<p>
-<img src="./docs/assets/logo.png" alt="My Logo" style="max-height: 45px;">
+<p align="center">
+  <a href="https://packagist.org/packages/aaix/laravel-countries"><img src="https://img.shields.io/packagist/v/aaix/laravel-countries.svg?style=flat-square" alt="Latest Version on Packagist"></a>
+  <a href="https://packagist.org/packages/aaix/laravel-countries"><img src="https://img.shields.io/packagist/dt/aaix/laravel-countries.svg?style=flat-square" alt="Total Downloads"></a>
+  <a href="https://github.com/jonaaix/laravel-countries/actions/workflows/tests.yml"><img src="https://img.shields.io/github/actions/workflow/status/jonaaix/laravel-countries/tests.yml?branch=master&label=tests&style=flat-square" alt="GitHub Actions"></a>
+  <a href="https://github.com/jonaaix/laravel-countries/blob/master/LICENSE.md"><img src="https://img.shields.io/packagist/l/aaix/laravel-countries.svg?style=flat-square" alt="License"></a>
 </p>
 
-Laravel Countries is a package that provides everything you need to kickstart a new project with comprehensive country information, including translations. Optimized for Laravel, it ensures efficient access and management of country data.
+---
 
-The package stores all data directly in your database, allowing you to easily link it to any other table in a simple and familiar way using Laravel’s Eloquent ORM.
+## Install
 
-## 🌍 Available Languages
-
-We currently support the following languages:
-
-| Language      | Flag | Country      | Number of Countries |
-|---------------|------|--------------|---------------------|
-| Arabic        | 🇸🇦   | Saudi Arabia | 25                  |
-| Dutch         | 🇳🇱   | Netherlands  | 3                   |
-| English       | 🇬🇧   | United Kingdom| 67                  |
-| German        | 🇩🇪   | Germany      | 6                   |
-| Italian       | 🇮🇹   | Italy        | 4                   |
-| Portuguese    | 🇧🇷   | Brazil       | 9                   |
-| Russian       | 🇷🇺   | Russia       | 4                   |
-| Spanish       | 🇪🇸   | Spain        | 21                  |
-
-## 🚀 Getting Started
-
-Install the package quickly via Composer:
-
-```sh
-composer require lwwcas/laravel-countries
+```bash
+composer require aaix/laravel-countries
+php artisan migrate
 ```
 
-And get started with Artisan
+Migrations load automatically via the package service provider. Nothing to publish, no install command, no prompts.
 
-```sh
-php artisan w-countries:install
+## Seed
+
+You get 5 regions, 245 countries, 9 language translations (ar, de, en, es, fr, it, nl, pt, ru) and the `native_name` column populated in one idempotent pass. Re-running the seeder is safe: every write is an `updateOrCreate` keyed on ISO code / locale — stable primary keys, no duplicates, no unique-key violations.
+
+### Option A — Run it once, by hand
+
+If you just want to populate country data and be done with it, run the master seeder directly:
+
+```bash
+php artisan db:seed --class="Aaix\\LaravelCountries\\Database\\Seeders\\DatabaseSeeder"
 ```
+
+That's it. No changes to your app's `DatabaseSeeder.php`, no `vendor:publish`, nothing to remember next time. Safe to re-run whenever you want to refresh the data (e.g. after a package update).
+
+### Option B — Integrate into your deploy pipeline
+
+If you want country data to stay in sync automatically across deploys, call the master seeder from your app's own `database/seeders/DatabaseSeeder.php`:
+
+```php
+public function run(): void
+{
+    $this->call(\Aaix\LaravelCountries\Database\Seeders\DatabaseSeeder::class);
+    // your own seeders here
+}
+```
+
+Then your normal `php artisan db:seed` (or `db:seed --force` in CI) runs country data alongside everything else. Because every write is idempotent, running it on every deploy is safe.
+
+## Principle
+
+A country-data package should do exactly two things: **create the tables** and **keep the rows in sync**. Everything else — interactive install flows, `vendor:publish` dances, per-language opt-in commands — breaks on production deploys the moment you don't have a TTY. This fork strips all of that. Three commands, done.
 
 ## Usage
 
-You can access all the information in the database with a simple query
+```php
+use Aaix\LaravelCountries\Models\Country;
 
-```  php
-use  Lwwcas\LaravelCountries\Models\Country;
+// Lookup
+$de = Country::getByCode('DE');             // alpha-2, case-insensitive
+$de = Country::whereIsoAlpha3('DEU')->first();
+$de = Country::whereIso('276')->first();    // matches alpha-2, alpha-3, or numeric
 
-Country::whereIso('BR')->first();
-Country::whereIsoAlpha3('BRA')->first();
-Country::whereSlug('brasil')->first();
+// Names
+$de->name;                                  // current app locale, falls back to config fallback
+$de->nameInLang('ja');                      // "Germany" (falls back if 'ja' missing)
+$de->official_name;                         // "Federal Republic of Germany"
+$de->native_name;                           // "Deutschland"
+
+// Bulk localized list — ready for dropdowns
+Country::listInLang('de');
+// Collection(['DE' => 'Deutschland', 'FR' => 'Frankreich', ...] sorted by name)
+
+// Flag
+$de->getFlagEmoji();                        // 🇩🇪
+$de->flag_colors_hex;                       // ['#000000', '#DD0000', '#FFCE00']
+
+// Relations
+$de->region;                                // CountryRegion
+$de->coordinates;                           // CountryCoordinates
+$de->extras;                                // CountryExtras (religions, orgs, sports, internet stats)
+$de->geographical;                          // CountryGeographical (GeoJSON)
 ```
 
-### Testing With Pest Php
+All the existing Query Scopes from upstream (`whereIso`, `whereIsoAlpha2`, `whereIsoAlpha3`, `whereIsoNumeric`, `whereCurrency`, `whereBorders`, `whereDomain`, `whereLanguages`, `whereFlagColors`, `wherePhoneCode`, `whereIndependenceDay`, `whereStatistics`, `whereName`, `whereSlug`, `whereWmo`) continue to work — only the namespace changed.
 
-```  bash
+## Table layout
+
+| Table | Purpose |
+|---|---|
+| `lc_regions` | 5 continents (Africa, Americas, Asia, Europe, Oceania) |
+| `lc_region_translations` | Region names per locale |
+| `lc_countries` | 245 countries — ISO codes, capital, currency, flag metadata, `native_name`, population, GDP etc. |
+| `lc_countries_translations` | Country name + slug per locale |
+| `lc_countries_coordinates` | Latitude/longitude and formatted coordinate variants |
+| `lc_countries_geographical` | Country outline as GeoJSON |
+| `lc_countries_extras` | Religions, international orgs, national sport, internet stats, cybersecurity agency |
+
+Translations are handled by [`astrotomic/laravel-translatable`](https://github.com/Astrotomic/laravel-translatable) (already a dependency). The `withTranslation()` global scope eager-loads the current locale + fallback locale — so `Country::all()->pluck('name')` is one query, not N+1.
+
+## Requirements
+
+- PHP 8.2+
+- Laravel 11+
+
+## Testing
+
+```bash
 composer test
 ```
 
 ## Credits
 
-- [Lucas Duarte](https://github.com/lwwcas)
-- [All Contributors](../../contributors)
+- [Lucas Duarte](https://github.com/lwwcas) — original package author, country-data curator
+- [Jonas Gnioui](https://github.com/jonaaix) — fork maintainer
 
 ## License
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+MIT. See [LICENSE.md](LICENSE.md).

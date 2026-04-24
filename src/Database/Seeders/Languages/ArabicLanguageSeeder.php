@@ -1,9 +1,9 @@
 <?php
 
-namespace Lwwcas\LaravelCountries\Database\Seeders\Languages;
+namespace Aaix\LaravelCountries\Database\Seeders\Languages;
 
 use Illuminate\Database\Seeder;
-use Lwwcas\LaravelCountries\Database\Seeders\Builder;
+use Aaix\LaravelCountries\Database\Seeders\Builder;
 
 class ArabicLanguageSeeder extends Seeder
 {

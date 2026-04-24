@@ -1,9 +1,9 @@
 <?php
 
-use Lwwcas\LaravelCountries\Database\Factories\CountryFactory;
-use Lwwcas\LaravelCountries\Database\Factories\CountryRegionFactory;
-use Lwwcas\LaravelCountries\Models\Country;
-use Lwwcas\LaravelCountries\Models\CountryRegion;
+use Aaix\LaravelCountries\Database\Factories\CountryFactory;
+use Aaix\LaravelCountries\Database\Factories\CountryRegionFactory;
+use Aaix\LaravelCountries\Models\Country;
+use Aaix\LaravelCountries\Models\CountryRegion;
 
 it('should apply the visible global scope on Region Model', function () {
     CountryRegionFactory::new()->count(5)->create([

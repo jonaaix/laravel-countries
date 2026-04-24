@@ -1,9 +1,9 @@
 <?php
 
-namespace Lwwcas\LaravelCountries\Abstract;
+namespace Aaix\LaravelCountries\Abstract;
 
 use Illuminate\Database\Eloquent\Model;
-use Lwwcas\LaravelCountries\Models\Concerns\HasConfigs;
+use Aaix\LaravelCountries\Models\Concerns\HasConfigs;
 
 abstract class CountryModel extends Model
 {

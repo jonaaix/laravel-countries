@@ -1,7 +1,7 @@
 <?php
 
-use Lwwcas\LaravelCountries\Database\Factories\CountryFactory;
-use Lwwcas\LaravelCountries\Models\Country;
+use Aaix\LaravelCountries\Database\Factories\CountryFactory;
+use Aaix\LaravelCountries\Models\Country;
 
 dataset('where.flagColors', [
     ['flag_colors_web', 'whereFlagColorWeb', 'Red', ['Red', 'Blue']],

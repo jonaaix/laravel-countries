@@ -1,6 +1,6 @@
 <?php
 
-use Lwwcas\LaravelCountries\Database\Factories\CountryFactory;
+use Aaix\LaravelCountries\Database\Factories\CountryFactory;
 
 it('should gets the flag emoji', function ($method, $key) {
     $country = CountryFactory::new()->make();

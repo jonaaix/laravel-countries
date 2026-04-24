@@ -1,7 +1,7 @@
 <?php
 
-use Lwwcas\LaravelCountries\Database\Factories\CountryFactory;
-use Lwwcas\LaravelCountries\Models\Country;
+use Aaix\LaravelCountries\Database\Factories\CountryFactory;
+use Aaix\LaravelCountries\Models\Country;
 
 it('should can filter by population', function (int $population, int $where, int $expected) {
     CountryFactory::new()->count(10)->create(['population' => $population]);

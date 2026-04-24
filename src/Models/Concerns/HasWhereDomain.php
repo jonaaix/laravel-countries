@@ -1,6 +1,6 @@
 <?php
 
-namespace Lwwcas\LaravelCountries\Models\Concerns;
+namespace Aaix\LaravelCountries\Models\Concerns;
 
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Support\Str;

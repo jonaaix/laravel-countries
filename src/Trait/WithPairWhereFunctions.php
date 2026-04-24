@@ -1,8 +1,8 @@
 <?php
 
-namespace Lwwcas\LaravelCountries\Trait;
+namespace Aaix\LaravelCountries\Trait;
 
-use Lwwcas\LaravelCountries\Facades\FlagEmoji;
+use Aaix\LaravelCountries\Facades\FlagEmoji;
 
 trait WithPairWhereFunctions
 {
@@ -77,7 +77,7 @@ trait WithPairWhereFunctions
      * This method returns a list of countries with their ids and emojis.
      * The list is cached for a long time to avoid querying the database too much.
      *
-     * @return \Lwwcas\LaravelCountries\Facades\FlagEmoji
+     * @return \Aaix\LaravelCountries\Facades\FlagEmoji
      */
     public function idAndEmoji()
     {
@@ -196,7 +196,7 @@ trait WithPairWhereFunctions
      * This method returns a list of countries with their names and emojis.
      * The list is cached for a long time to avoid querying the database too much.
      *
-     * @return \Lwwcas\LaravelCountries\Facades\FlagEmoji
+     * @return \Aaix\LaravelCountries\Facades\FlagEmoji
      */
     public function nameAndEmoji()
     {
@@ -236,7 +236,7 @@ trait WithPairWhereFunctions
      * This method returns a list of countries with their official names and emojis.
      * The list is cached for a long time to avoid querying the database too much.
      *
-     * @return \Lwwcas\LaravelCountries\Facades\FlagEmoji
+     * @return \Aaix\LaravelCountries\Facades\FlagEmoji
      */
     public function officialNameAndEmoji()
     {
@@ -315,7 +315,7 @@ trait WithPairWhereFunctions
      * This method returns a list of countries with their iso_alpha_2 codes and emojis.
      * The list is cached for a long time to avoid querying the database too much.
      *
-     * @return \Lwwcas\LaravelCountries\Facades\FlagEmoji
+     * @return \Aaix\LaravelCountries\Facades\FlagEmoji
      */
     public function alpha2AndEmoji()
     {
@@ -382,7 +382,7 @@ trait WithPairWhereFunctions
      * This method returns a list of countries with their iso_alpha_3 codes and emojis.
      * The list is cached for a long time to avoid querying the database too much.
      *
-     * @return \Lwwcas\LaravelCountries\Facades\FlagEmoji
+     * @return \Aaix\LaravelCountries\Facades\FlagEmoji
      */
     public function alpha3AndEmoji()
     {

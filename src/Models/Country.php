@@ -1,41 +1,41 @@
 <?php
 
-namespace Lwwcas\LaravelCountries\Models;
+namespace Aaix\LaravelCountries\Models;
 
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Str;
-use Lwwcas\LaravelCountries\Abstract\CountryModel;
-use Lwwcas\LaravelCountries\Models\Concerns\HasCountriesList;
-use Lwwcas\LaravelCountries\Models\Concerns\HasFlagColorsGetters;
-use Lwwcas\LaravelCountries\Models\Concerns\HasFlagEmojiGetters;
-use Lwwcas\LaravelCountries\Models\Concerns\HasTranslationGlobalScope;
-use Lwwcas\LaravelCountries\Models\Concerns\HasVisibleGlobalScope;
-use Lwwcas\LaravelCountries\Models\Concerns\HasWhereBorders;
-use Lwwcas\LaravelCountries\Models\Concerns\HasWhereCurrency;
-use Lwwcas\LaravelCountries\Models\Concerns\HasWhereDomain;
-use Lwwcas\LaravelCountries\Models\Concerns\HasWhereFlagColors;
-use Lwwcas\LaravelCountries\Models\Concerns\HasWhereIndependenceDay;
-use Lwwcas\LaravelCountries\Models\Concerns\HasWhereIso;
-use Lwwcas\LaravelCountries\Models\Concerns\HasWhereIsoAlpha2;
-use Lwwcas\LaravelCountries\Models\Concerns\HasWhereIsoAlpha3;
-use Lwwcas\LaravelCountries\Models\Concerns\HasWhereIsoNumeric;
-use Lwwcas\LaravelCountries\Models\Concerns\HasWhereLanguages;
-use Lwwcas\LaravelCountries\Models\Concerns\HasWhereName;
-use Lwwcas\LaravelCountries\Models\Concerns\HasWherePhoneCode;
-use Lwwcas\LaravelCountries\Models\Concerns\HasWhereSlug;
-use Lwwcas\LaravelCountries\Models\Concerns\HasWhereStatistics;
-use Lwwcas\LaravelCountries\Models\Concerns\HasWhereWmo;
-use Lwwcas\LaravelCountries\Models\Concerns\VisibleAttributes;
-use Lwwcas\LaravelCountries\Models\CountryCoordinates;
-use Lwwcas\LaravelCountries\Models\CountryExtras;
-use Lwwcas\LaravelCountries\Models\CountryGeographical;
-use Lwwcas\LaravelCountries\Models\CountryRegion;
-use Lwwcas\LaravelCountries\Models\CountryTranslation;
-use Lwwcas\LaravelCountries\Trait\WithCoordinatesBootstrap;
-use Lwwcas\LaravelCountries\Trait\WithFlagColorBootstrap;
+use Aaix\LaravelCountries\Abstract\CountryModel;
+use Aaix\LaravelCountries\Models\Concerns\HasCountriesList;
+use Aaix\LaravelCountries\Models\Concerns\HasFlagColorsGetters;
+use Aaix\LaravelCountries\Models\Concerns\HasFlagEmojiGetters;
+use Aaix\LaravelCountries\Models\Concerns\HasTranslationGlobalScope;
+use Aaix\LaravelCountries\Models\Concerns\HasVisibleGlobalScope;
+use Aaix\LaravelCountries\Models\Concerns\HasWhereBorders;
+use Aaix\LaravelCountries\Models\Concerns\HasWhereCurrency;
+use Aaix\LaravelCountries\Models\Concerns\HasWhereDomain;
+use Aaix\LaravelCountries\Models\Concerns\HasWhereFlagColors;
+use Aaix\LaravelCountries\Models\Concerns\HasWhereIndependenceDay;
+use Aaix\LaravelCountries\Models\Concerns\HasWhereIso;
+use Aaix\LaravelCountries\Models\Concerns\HasWhereIsoAlpha2;
+use Aaix\LaravelCountries\Models\Concerns\HasWhereIsoAlpha3;
+use Aaix\LaravelCountries\Models\Concerns\HasWhereIsoNumeric;
+use Aaix\LaravelCountries\Models\Concerns\HasWhereLanguages;
+use Aaix\LaravelCountries\Models\Concerns\HasWhereName;
+use Aaix\LaravelCountries\Models\Concerns\HasWherePhoneCode;
+use Aaix\LaravelCountries\Models\Concerns\HasWhereSlug;
+use Aaix\LaravelCountries\Models\Concerns\HasWhereStatistics;
+use Aaix\LaravelCountries\Models\Concerns\HasWhereWmo;
+use Aaix\LaravelCountries\Models\Concerns\VisibleAttributes;
+use Aaix\LaravelCountries\Models\CountryCoordinates;
+use Aaix\LaravelCountries\Models\CountryExtras;
+use Aaix\LaravelCountries\Models\CountryGeographical;
+use Aaix\LaravelCountries\Models\CountryRegion;
+use Aaix\LaravelCountries\Models\CountryTranslation;
+use Aaix\LaravelCountries\Trait\WithCoordinatesBootstrap;
+use Aaix\LaravelCountries\Trait\WithFlagColorBootstrap;
 
 class Country extends CountryModel
 {
@@ -93,6 +93,7 @@ class Country extends CountryModel
         'lc_region_id', // Foreign key linking the country to a specific region.
 
         'official_name', // The official name of the country (e.g., "United States of America").
+        'native_name', // The country's name in its own primary language (e.g., "Deutschland", "日本").
         'capital', // The capital city of the country.
         'iso_alpha_2', // ISO 3166-1 alpha-2 country code (e.g., "US" for the United States).
         'iso_alpha_3', // ISO 3166-1 alpha-3 country code (e.g., "USA" for the United States).
@@ -419,6 +420,46 @@ class Country extends CountryModel
     {
         return $this->geographical()->first()->getGeoData();
 
+    }
+
+    /**
+     * Look up a country by its ISO 3166-1 alpha-2 code.
+     *
+     * Case-insensitive; returns null if the country is not found.
+     */
+    public static function getByCode(string $code): ?self
+    {
+        return static::where('iso_alpha_2', Str::upper($code))->first();
+    }
+
+    /**
+     * Get the country's name in the requested locale.
+     *
+     * Falls back to the configured fallback locale (typically "en") if the
+     * requested locale has no translation.
+     */
+    public function nameInLang(string $locale): ?string
+    {
+        return $this->translate($locale)?->name
+            ?? $this->translate(config('translatable.fallback_locale', 'en'))?->name;
+    }
+
+    /**
+     * Get a [iso_alpha_2 => name] list of all countries in the requested locale.
+     *
+     * Eager-loads only the requested locale + fallback (so no N+1), and sorts
+     * alphabetically by the translated name. Ideal for select/dropdown inputs.
+     */
+    public static function listInLang(string $locale): \Illuminate\Support\Collection
+    {
+        $fallback = config('translatable.fallback_locale', 'en');
+        $locales = array_unique([$locale, $fallback]);
+
+        return static::withoutGlobalScope('translation')
+            ->with(['translations' => fn ($q) => $q->whereIn('locale', $locales)])
+            ->get()
+            ->mapWithKeys(fn (self $c) => [$c->iso_alpha_2 => $c->nameInLang($locale)])
+            ->sort();
     }
 
 }

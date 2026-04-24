@@ -1,10 +1,10 @@
 <?php
 
-namespace Lwwcas\LaravelCountries\Facades;
+namespace Aaix\LaravelCountries\Facades;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
-use Lwwcas\LaravelCountries\Models\Concerns\HasFlagEmojiGetters;
+use Aaix\LaravelCountries\Models\Concerns\HasFlagEmojiGetters;
 
 final class FlagEmoji
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Lwwcas\LaravelCountries\Models\Concerns;
+namespace Aaix\LaravelCountries\Models\Concerns;
 
 trait HasWherePhoneCode
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Lwwcas\LaravelCountries\Tests;
+namespace Aaix\LaravelCountries\Tests;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Lwwcas\LaravelCountries\Providers\WCountriesServiceProvider;
+use Aaix\LaravelCountries\Providers\CountriesServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
@@ -19,7 +19,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageProviders($app)
     {
         return [
-            WCountriesServiceProvider::class,
+            CountriesServiceProvider::class,
         ];
     }
 

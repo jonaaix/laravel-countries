@@ -1,6 +1,6 @@
 <?php
 
-use Lwwcas\LaravelCountries\Database\Factories\CountryFactory;
+use Aaix\LaravelCountries\Database\Factories\CountryFactory;
 
 dataset('getters.flagColors', [
     'getFlagColors',

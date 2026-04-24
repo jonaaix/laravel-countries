@@ -1,6 +1,6 @@
 <?php
 
-namespace Lwwcas\LaravelCountries\Contracts;
+namespace Aaix\LaravelCountries\Contracts;
 
 interface CountrySeedInterface
 {

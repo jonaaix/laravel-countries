@@ -1,11 +1,11 @@
 <?php
 
-namespace Lwwcas\LaravelCountries\Models\Concerns;
+namespace Aaix\LaravelCountries\Models\Concerns;
 
-use Lwwcas\LaravelCountries\Facades\FlagEmoji;
-use Lwwcas\LaravelCountries\Models\Country;
-use Lwwcas\LaravelCountries\Trait\WithOnlyWhereFunctions;
-use Lwwcas\LaravelCountries\Trait\WithPairWhereFunctions;
+use Aaix\LaravelCountries\Facades\FlagEmoji;
+use Aaix\LaravelCountries\Models\Country;
+use Aaix\LaravelCountries\Trait\WithOnlyWhereFunctions;
+use Aaix\LaravelCountries\Trait\WithPairWhereFunctions;
 
 trait HasCountriesList
 {

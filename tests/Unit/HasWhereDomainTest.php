@@ -1,7 +1,7 @@
 <?php
 
-use Lwwcas\LaravelCountries\Database\Factories\CountryFactory;
-use Lwwcas\LaravelCountries\Models\Country;
+use Aaix\LaravelCountries\Database\Factories\CountryFactory;
+use Aaix\LaravelCountries\Models\Country;
 
 it('should filters countries by Domain TLD', function () {
     CountryFactory::new()->create([

@@ -1,10 +1,10 @@
 <?php
 
-namespace Lwwcas\LaravelCountries\Models;
+namespace Aaix\LaravelCountries\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Lwwcas\LaravelCountries\Abstract\CountryModel;
+use Aaix\LaravelCountries\Abstract\CountryModel;
 
 class CountryGeographical extends CountryModel
 {

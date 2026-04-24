@@ -1,18 +1,18 @@
 <?php
 
-namespace Lwwcas\LaravelCountries\Models;
+namespace Aaix\LaravelCountries\Models;
 
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Lwwcas\LaravelCountries\Abstract\CountryModel;
-use Lwwcas\LaravelCountries\Models\Concerns\HasTranslationGlobalScope;
-use Lwwcas\LaravelCountries\Models\Concerns\HasVisibleGlobalScope;
-use Lwwcas\LaravelCountries\Models\Concerns\HasWhereIso;
-use Lwwcas\LaravelCountries\Models\Concerns\HasWhereIsoAlpha2;
-use Lwwcas\LaravelCountries\Models\Concerns\HasWhereName;
-use Lwwcas\LaravelCountries\Models\Concerns\HasWhereSlug;
-use Lwwcas\LaravelCountries\Models\Concerns\VisibleAttributes;
+use Aaix\LaravelCountries\Abstract\CountryModel;
+use Aaix\LaravelCountries\Models\Concerns\HasTranslationGlobalScope;
+use Aaix\LaravelCountries\Models\Concerns\HasVisibleGlobalScope;
+use Aaix\LaravelCountries\Models\Concerns\HasWhereIso;
+use Aaix\LaravelCountries\Models\Concerns\HasWhereIsoAlpha2;
+use Aaix\LaravelCountries\Models\Concerns\HasWhereName;
+use Aaix\LaravelCountries\Models\Concerns\HasWhereSlug;
+use Aaix\LaravelCountries\Models\Concerns\VisibleAttributes;
 
 class CountryRegion extends CountryModel
 {

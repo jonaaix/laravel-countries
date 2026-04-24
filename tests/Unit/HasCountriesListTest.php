@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Collection;
-use Lwwcas\LaravelCountries\Database\Factories\CountryFactory;
-use Lwwcas\LaravelCountries\Facades\FlagEmoji;
-use Lwwcas\LaravelCountries\Models\Country;
+use Aaix\LaravelCountries\Database\Factories\CountryFactory;
+use Aaix\LaravelCountries\Facades\FlagEmoji;
+use Aaix\LaravelCountries\Models\Country;
 
 it('should return a list of countries with name and slugs efficiently', function () {
     foreach (range(1, 30) as $item) {

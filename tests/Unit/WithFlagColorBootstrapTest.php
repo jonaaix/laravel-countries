@@ -1,6 +1,6 @@
 <?php
 
-use Lwwcas\LaravelCountries\Database\Factories\CountryFactory;
+use Aaix\LaravelCountries\Database\Factories\CountryFactory;
 
 it('should can generate flag gradient on default', function () {
     $country = CountryFactory::new()->create([

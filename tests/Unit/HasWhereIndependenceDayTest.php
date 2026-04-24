@@ -1,8 +1,8 @@
 <?php
 
 use Carbon\Carbon;
-use Lwwcas\LaravelCountries\Database\Factories\CountryFactory;
-use Lwwcas\LaravelCountries\Models\Country;
+use Aaix\LaravelCountries\Database\Factories\CountryFactory;
+use Aaix\LaravelCountries\Models\Country;
 
 it('should filters by independence day', function () {
     $date = Carbon::createFromDate(1990, 6, 12)->format('Y-m-d');

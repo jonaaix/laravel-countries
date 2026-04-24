@@ -1,9 +1,9 @@
 <?php
 
-namespace Lwwcas\LaravelCountries\Database\Seeders\Countries;
+namespace Aaix\LaravelCountries\Database\Seeders\Countries;
 
-use Lwwcas\LaravelCountries\Abstract\CountrySeeder;
-use Lwwcas\LaravelCountries\Database\Seeders\Builder;
+use Aaix\LaravelCountries\Abstract\CountrySeeder;
+use Aaix\LaravelCountries\Database\Seeders\Builder;
 
 class WS_Samoa extends CountrySeeder
 {

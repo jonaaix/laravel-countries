@@ -1,7 +1,7 @@
 <?php
 
-use Lwwcas\LaravelCountries\Database\Factories\CountryFactory;
-use Lwwcas\LaravelCountries\Models\Country;
+use Aaix\LaravelCountries\Database\Factories\CountryFactory;
+use Aaix\LaravelCountries\Models\Country;
 
 it('should filters countries by iso_alpha_3 code', function () {
     CountryFactory::new()->create([

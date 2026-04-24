@@ -1,86 +1,77 @@
 <?php
 
-namespace Lwwcas\LaravelCountries\Database\Seeders;
+namespace Aaix\LaravelCountries\Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
-use Lwwcas\LaravelCountries\Models\CountryRegion;
+use Aaix\LaravelCountries\Models\CountryRegion;
+use Aaix\LaravelCountries\Models\CountryRegionTranslation;
 
 class RegionsSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        $regions = [
-            'africa' => [
-                'name' => 'Africa',
-                'iso_alpha_2' => 'AF', // ISO 3166-1 Alpha-2 code
-                'icao_region' => 'AFI', // International Civil Aviation Organization (ICAO) region
-                'iucn_region' => 'Africa', // International Union for Conservation of Nature (IUCN) region
-                'tdwg' => 'AFR', // World Geographical Scheme for Recording Plant Distributions code
-            ],
-            'americas' => [
-                'name' => 'Americas',
-                'iso_alpha_2' => 'AM', // ISO 3166-1 Alpha-2 code
-                'icao_region' => 'NAT', // International Civil Aviation Organization (ICAO) region
-                'iucn_region' => 'Americas', // International Union for Conservation of Nature (IUCN) region
-                'tdwg' => 'NAM/SAM', // World Geographical Scheme for Recording Plant Distributions (North and South America)
-            ],
-            'asia' => [
-                'name' => 'Asia',
-                'iso_alpha_2' => 'AS', // ISO 3166-1 Alpha-2 code
-                'icao_region' => 'ASI', // International Civil Aviation Organization (ICAO) region
-                'iucn_region' => 'Asia', // International Union for Conservation of Nature (IUCN) region
-                'tdwg' => 'ASI', // World Geographical Scheme for Recording Plant Distributions code
-            ],
-            'europe' => [
-                'name' => 'Europe',
-                'iso_alpha_2' => 'EU', // ISO 3166-1 Alpha-2 code
-                'icao_region' => 'EUR', // International Civil Aviation Organization (ICAO) region
-                'iucn_region' => 'Europe', // International Union for Conservation of Nature (IUCN) region
-                'tdwg' => 'EUR', // World Geographical Scheme for Recording Plant Distributions code
-            ],
-            'oceania' => [
-                'name' => 'Oceania',
-                'iso_alpha_2' => 'OC', // ISO 3166-1 Alpha-2 code
-                'icao_region' => 'PAC', // International Civil Aviation Organization (ICAO) region
-                'iucn_region' => 'Oceania', // International Union for Conservation of Nature (IUCN) region
-                'tdwg' => 'OCN', // World Geographical Scheme for Recording Plant Distributions code
-            ],
-        ];
-
-        if (Schema::hasTable('lc_regions') == false) {
+        if (Schema::hasTable('lc_regions') === false) {
             return;
         }
 
+        $regions = [
+            'africa' => [
+                'name' => 'Africa',
+                'iso_alpha_2' => 'AF',
+                'icao_region' => 'AFI',
+                'iucn_region' => 'Africa',
+                'tdwg' => 'AFR',
+            ],
+            'americas' => [
+                'name' => 'Americas',
+                'iso_alpha_2' => 'AM',
+                'icao_region' => 'NAT',
+                'iucn_region' => 'Americas',
+                'tdwg' => 'NAM/SAM',
+            ],
+            'asia' => [
+                'name' => 'Asia',
+                'iso_alpha_2' => 'AS',
+                'icao_region' => 'ASI',
+                'iucn_region' => 'Asia',
+                'tdwg' => 'ASI',
+            ],
+            'europe' => [
+                'name' => 'Europe',
+                'iso_alpha_2' => 'EU',
+                'icao_region' => 'EUR',
+                'iucn_region' => 'Europe',
+                'tdwg' => 'EUR',
+            ],
+            'oceania' => [
+                'name' => 'Oceania',
+                'iso_alpha_2' => 'OC',
+                'icao_region' => 'PAC',
+                'iucn_region' => 'Oceania',
+                'tdwg' => 'OCN',
+            ],
+        ];
+
         foreach ($regions as $region) {
-            $countryRegion = CountryRegion::whereSlug(Str::slug($region['name'], '-'), 'en')
-                ->first();
+            $regionRecord = CountryRegion::updateOrCreate(
+                ['iso_alpha_2' => $region['iso_alpha_2']],
+                [
+                    'icao' => $region['icao_region'],
+                    'iucn' => $region['iucn_region'],
+                    'tdwg' => $region['tdwg'],
+                    'is_visible' => true,
+                ]
+            );
 
-            if ($countryRegion != null) {
-                $countryRegion->delete();
-                $countryRegion->translations()->delete();
-            }
-
-            CountryRegion::create([
-                'iso_alpha_2' => $region['iso_alpha_2'],
-                'icao' => $region['icao_region'],
-                'iucn' => $region['iucn_region'],
-                'tdwg' => $region['tdwg'],
-                'is_visible' => true,
-
-                'en' => [
-                    'slug' => Str::slug($region['name'], '-'),
+            CountryRegionTranslation::updateOrCreate(
+                ['lc_region_id' => $regionRecord->id, 'locale' => 'en'],
+                [
                     'name' => Str::title($region['name']),
-                ],
-            ]);
+                    'slug' => Str::slug($region['name'], '-'),
+                ]
+            );
         }
-
-        return;
-
     }
 }

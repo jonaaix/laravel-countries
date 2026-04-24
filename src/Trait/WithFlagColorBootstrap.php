@@ -1,8 +1,8 @@
 <?php
 
-namespace Lwwcas\LaravelCountries\Trait;
+namespace Aaix\LaravelCountries\Trait;
 
-use Lwwcas\LaravelCountries\Models\Country;
+use Aaix\LaravelCountries\Models\Country;
 
 trait WithFlagColorBootstrap
 {

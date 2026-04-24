@@ -1,7 +1,7 @@
 <?php
-use Lwwcas\LaravelCountries\Database\Factories\CountryCoordinatesFactory;
-use Lwwcas\LaravelCountries\Database\Factories\CountryFactory;
-use Lwwcas\LaravelCountries\Database\Factories\CountryRegionFactory;
+use Aaix\LaravelCountries\Database\Factories\CountryCoordinatesFactory;
+use Aaix\LaravelCountries\Database\Factories\CountryFactory;
+use Aaix\LaravelCountries\Database\Factories\CountryRegionFactory;
 
 it('should return the latitude in decimal degrees', function () {
     $country = CountryFactory::new()->create();

@@ -1,15 +1,15 @@
 <?php
 
-use Lwwcas\LaravelCountries\Database\Factories\CountryCoordinatesFactory;
-use Lwwcas\LaravelCountries\Database\Factories\CountryExtrasFactory;
-use Lwwcas\LaravelCountries\Database\Factories\CountryFactory;
-use Lwwcas\LaravelCountries\Database\Factories\CountryGeographicalFactory;
-use Lwwcas\LaravelCountries\Database\Factories\CountryRegionFactory;
-use Lwwcas\LaravelCountries\Models\Country;
-use Lwwcas\LaravelCountries\Models\CountryCoordinates;
-use Lwwcas\LaravelCountries\Models\CountryExtras;
-use Lwwcas\LaravelCountries\Models\CountryGeographical;
-use Lwwcas\LaravelCountries\Models\CountryRegion;
+use Aaix\LaravelCountries\Database\Factories\CountryCoordinatesFactory;
+use Aaix\LaravelCountries\Database\Factories\CountryExtrasFactory;
+use Aaix\LaravelCountries\Database\Factories\CountryFactory;
+use Aaix\LaravelCountries\Database\Factories\CountryGeographicalFactory;
+use Aaix\LaravelCountries\Database\Factories\CountryRegionFactory;
+use Aaix\LaravelCountries\Models\Country;
+use Aaix\LaravelCountries\Models\CountryCoordinates;
+use Aaix\LaravelCountries\Models\CountryExtras;
+use Aaix\LaravelCountries\Models\CountryGeographical;
+use Aaix\LaravelCountries\Models\CountryRegion;
 
 it('should has a region relationship', function () {
     $region = CountryRegionFactory::new()->create();

@@ -1,7 +1,7 @@
 <?php
 
-use Lwwcas\LaravelCountries\Database\Factories\CountryRegionFactory;
-use Lwwcas\LaravelCountries\Models\CountryRegion;
+use Aaix\LaravelCountries\Database\Factories\CountryRegionFactory;
+use Aaix\LaravelCountries\Models\CountryRegion;
 
 it('should can get visible status on true', function () {
     CountryRegionFactory::new()->create([

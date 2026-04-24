@@ -1,6 +1,6 @@
 <?php
 
-namespace Lwwcas\LaravelCountries\Trait;
+namespace Aaix\LaravelCountries\Trait;
 
 trait WithCoordinatesBootstrap
 {

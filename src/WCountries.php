@@ -1,6 +1,6 @@
 <?php
 
-namespace Lwwcas\LaravelCountries;
+namespace Aaix\LaravelCountries;
 
 class WCountries
 {
