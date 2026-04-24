@@ -78,7 +78,7 @@ $de->extras;                 // CountryExtras — religions, intl. orgs, nationa
 
 ## Query scopes
 
-All upstream scopes continue to work under the new namespace:
+Available query scopes:
 
 | Scope | Example |
 |---|---|

@@ -17,7 +17,7 @@ composer require aaix/laravel-countries
 php artisan migrate
 ```
 
-That's it. Migrations are auto-loaded by the package's service provider — no `vendor:publish`, no install command, no prompts. The following tables are created:
+That's it. Migrations are auto-loaded by the package's service provider. The following tables are created:
 
 - `lc_regions`, `lc_region_translations`
 - `lc_countries`, `lc_countries_translations`
@@ -41,6 +41,3 @@ php artisan db:seed
 
 Re-run it as often as you like — every write is idempotent.
 
-## Why no install command?
-
-The upstream package (`lwwcas/laravel-countries`) ships an `w-countries:install` command with interactive prompts. That's fine in a local shell, fatal on a production deploy: CI runners have no TTY, seeding decisions get made at deploy time, not install time. This fork trades the prompt for Laravel conventions you already know.

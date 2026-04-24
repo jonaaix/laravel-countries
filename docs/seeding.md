@@ -7,8 +7,6 @@ A country-data package should do exactly two things:
 1. **Create the tables** — handled by the migrations that auto-load on `php artisan migrate`.
 2. **Keep the rows in sync** — handled by a single master seeder that's safe to re-run on every deploy.
 
-No publish dance, no interactive per-language opt-in, no prompts.
-
 ## The master seeder
 
 Call it from your application's `database/seeders/DatabaseSeeder.php`:
@@ -59,15 +57,15 @@ Every single write is a `Model::updateOrCreate([...key...], [...values...])` —
 
 Re-running the seeder on a fresh DB creates rows. Re-running it on a populated DB updates existing rows in place. Primary keys stay stable, so foreign keys in your own tables that reference country IDs keep pointing to the right row.
 
-The one exception is `CountryGeographical` (GeoJSON features), which is `delete-then-create` per country — so upstream GeoJSON data changes propagate cleanly.
+The one exception is `CountryGeographical` (GeoJSON features), which is `delete-then-create` per country — so geometry changes propagate cleanly.
 
 ::: tip Running in deploy pipelines
-`php artisan db:seed --no-interaction --class="Aaix\\LaravelCountries\\Database\\Seeders\\DatabaseSeeder"` runs fine on non-TTY CI runners. Add it to your deploy hook if you want country data to stay in sync with the package version automatically.
+`php artisan db:seed --no-interaction --class="Aaix\\LaravelCountries\\Database\\Seeders\\DatabaseSeeder"` works well in CI. Add it to your deploy hook if you want country data to stay in sync with the package version automatically.
 :::
 
 ## Native names
 
-`native_name` (the country's name in its own primary language — "Deutschland", "日本", "Россия") lives on the main `lc_countries` table, populated by the separate `NativeNamesSeeder`. It's separate so that upstream country-data updates (merged from `lwwcas/laravel-countries`) don't overwrite it.
+`native_name` (the country's name in its own primary language — "Deutschland", "日本", "Россия") lives on the main `lc_countries` table, populated by the separate `NativeNamesSeeder`. Keeping it in its own seeder lets native-name data be maintained independently of the per-country seeders.
 
 ## Languages
 

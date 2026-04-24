@@ -20,6 +20,7 @@ export default defineConfig({
       { text: 'Install', link: '/install' },
       { text: 'Seeding', link: '/seeding' },
       { text: 'Usage', link: '/usage' },
+      { text: 'Migrating', link: '/migrating' },
       { text: 'GitHub', link: 'https://github.com/jonaaix/laravel-countries' },
     ],
 
@@ -30,6 +31,7 @@ export default defineConfig({
           { text: 'Introduction', link: '/' },
           { text: 'Install', link: '/install' },
           { text: 'Seeding', link: '/seeding' },
+          { text: 'Migrating from lwwcas', link: '/migrating' },
         ],
       },
       {
