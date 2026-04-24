@@ -27,7 +27,7 @@ class CountryExtrasFactory extends Factory
     {
 
         return [
-            'lc_country_id' => CountryFactory::new()->create()->id,
+            'lc_country_id' => fn () => CountryFactory::new()->create()->id,
             'national_sport' =>  fake()->word(),
             'cybersecurity_agency' =>  fake()->word(),
 

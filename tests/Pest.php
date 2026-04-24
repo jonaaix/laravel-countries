@@ -18,6 +18,7 @@ uses(TestCase::class)->in(__DIR__);
 
 beforeEach(function () {
     $this->setUp();
+    \Illuminate\Support\Facades\App::setLocale('en');
 });
 
 /*

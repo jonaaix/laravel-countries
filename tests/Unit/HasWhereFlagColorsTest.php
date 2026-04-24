@@ -7,7 +7,7 @@ dataset('where.flagColors', [
     ['flag_colors_web', 'whereFlagColorWeb', 'Red', ['Red', 'Blue']],
 ]);
 
-it('1should filters countries by a single web flag color', function ($column, $method, $search, $expected) {
+it('should filters countries by flag color via dataset', function ($column, $method, $search, $expected) {
     CountryFactory::new()->create([$column => $expected]);
 
     $result = Country::{$method}($search)->get();

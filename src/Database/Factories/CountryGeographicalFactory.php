@@ -27,7 +27,7 @@ class CountryGeographicalFactory extends Factory
     {
 
         return [
-            'lc_country_id' => CountryFactory::new()->create()->id,
+            'lc_country_id' => fn () => CountryFactory::new()->create()->id,
             'type' =>  'FeatureCollection',
             'features_type' => 'Feature',
             'properties' =>  '{"cca2": "{'. fake()->languageCode() .'}"}',

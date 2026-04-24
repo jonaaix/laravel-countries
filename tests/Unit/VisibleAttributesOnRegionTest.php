@@ -31,7 +31,7 @@ it('should can get return visible status is true', function () {
         'is_visible' => true,
     ]);
 
-    $region = CountryRegion::find(1)->first();
+    $region = CountryRegion::find(1);
     $isVisible = $region->isVisible();
 
     expect($isVisible)->toBeTrue();
@@ -59,7 +59,7 @@ it('should can get return hidden status is true', function () {
         'is_visible' => true,
     ]);
 
-    $region = CountryRegion::find(1)->first();
+    $region = CountryRegion::find(1);
     $isHidden = $region->isHidden();
 
     expect($isHidden)->toBeFalse();

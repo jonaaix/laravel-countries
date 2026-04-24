@@ -29,7 +29,7 @@ class CountryFactory extends Factory
         $colors = $this->randomColors();
 
         return [
-            'lc_region_id' => CountryRegionFactory::new()->create()->id,
+            'lc_region_id' => fn () => CountryRegionFactory::new()->create()->id,
             'uid' => fake()->unixTime(),
 
             'official_name' => Str::title($name),
