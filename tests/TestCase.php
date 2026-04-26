@@ -13,7 +13,6 @@ class TestCase extends \Orchestra\Testbench\TestCase
     {
         parent::setUp();
         config()->set('translatable.locales', ['en', 'pt']);
-        $this->createTables();
     }
 
     protected function getPackageProviders($app)
@@ -21,11 +20,5 @@ class TestCase extends \Orchestra\Testbench\TestCase
         return [
             CountriesServiceProvider::class,
         ];
-    }
-
-    public function createTables()
-    {
-        $migrationsPath = dirname(__DIR__) . '/src/Database/migrations';
-        $this->loadMigrationsFrom($migrationsPath);
     }
 }
