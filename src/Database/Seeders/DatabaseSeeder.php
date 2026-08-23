@@ -39,6 +39,7 @@ class DatabaseSeeder extends Seeder
         $this->call(Countries\BM_Bermuda::class);
         $this->call(Countries\BN_BruneiDarussalam::class);
         $this->call(Countries\BO_Bolivia::class);
+        $this->call(Countries\BQ_CaribbeanNetherlands::class);
         $this->call(Countries\BR_Brazil::class);
         $this->call(Countries\BS_Bahamas::class);
         $this->call(Countries\BT_Bhutan::class);
@@ -61,6 +62,7 @@ class DatabaseSeeder extends Seeder
         $this->call(Countries\CR_CostaRica::class);
         $this->call(Countries\CU_Cuba::class);
         $this->call(Countries\CV_CapeVerde::class);
+        $this->call(Countries\CW_Curacao::class);
         $this->call(Countries\CX_ChristmasIsland::class);
         $this->call(Countries\CY_Cyprus::class);
         $this->call(Countries\CZ_CzechRepublic::class);
@@ -215,8 +217,10 @@ class DatabaseSeeder extends Seeder
         $this->call(Countries\SN_Senegal::class);
         $this->call(Countries\SO_Somalia::class);
         $this->call(Countries\SR_Suriname::class);
+        $this->call(Countries\SS_SouthSudan::class);
         $this->call(Countries\ST_SaoTomeandPrincipe::class);
         $this->call(Countries\SV_ElSalvador::class);
+        $this->call(Countries\SX_SintMaarten::class);
         $this->call(Countries\SY_Syria::class);
         $this->call(Countries\SZ_Swaziland::class);
         $this->call(Countries\TC_TurksandCaicosIslands::class);
@@ -250,6 +254,7 @@ class DatabaseSeeder extends Seeder
         $this->call(Countries\VU_Vanuatu::class);
         $this->call(Countries\WF_WallisandFutunaIslands::class);
         $this->call(Countries\WS_Samoa::class);
+        $this->call(Countries\XK_Kosovo::class);
         $this->call(Countries\YE_Yemen::class);
         $this->call(Countries\YT_Mayotte::class);
         $this->call(Countries\ZA_SouthAfrica::class);

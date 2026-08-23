@@ -85,6 +85,7 @@ class Builder
                     'flag_colors_hsv' => array_column($country->flag_colors ?? [], 'hsv'),
                     'flag_colors_pantone' => array_column($country->flag_colors ?? [], 'pantone'),
                     'is_visible' => true,
+                    'is_eu_member' => in_array(strtoupper((string) $country->iso_alpha_2), Country::EU_ISO_ALPHA_2, true),
                 ]
             );
 

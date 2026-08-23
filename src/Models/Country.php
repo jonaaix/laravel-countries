@@ -39,6 +39,15 @@ use Aaix\LaravelCountries\Trait\WithFlagColorBootstrap;
 
 class Country extends CountryModel
 {
+    /**
+     * ISO 3166-1 alpha-2 codes of the current 27 European Union member states.
+     */
+    public const EU_ISO_ALPHA_2 = [
+        'AT', 'BE', 'BG', 'CY', 'CZ', 'DE', 'DK', 'EE', 'ES', 'FI',
+        'FR', 'GR', 'HR', 'HU', 'IE', 'IT', 'LT', 'LU', 'LV', 'MT',
+        'NL', 'PL', 'PT', 'RO', 'SE', 'SI', 'SK',
+    ];
+
     use HasFactory,
         Translatable,
         WithFlagColorBootstrap,
@@ -127,6 +136,7 @@ class Country extends CountryModel
         'flag_colors_pantone', // Pantone color codes for the flag.
 
         'is_visible', // Boolean flag indicating whether the country is visible in the application.
+        'is_eu_member', // Whether the country is a current member state of the European Union.
     ];
 
     /**
@@ -200,6 +210,7 @@ class Country extends CountryModel
             'independence_day' => 'date:Y-m-d',
 
             'is_visible' => 'boolean',
+            'is_eu_member' => 'boolean',
         ];
     }
 
