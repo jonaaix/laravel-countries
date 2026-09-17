@@ -2,23 +2,18 @@
 
 namespace Aaix\LaravelCountries\Database\Seeders\Countries;
 
-use Aaix\LaravelCountries\Database\Seeders\Builder;
 use Aaix\LaravelCountries\Abstract\CountrySeeder;
+use Aaix\LaravelCountries\Database\Seeders\Builder;
 
 class LB_Lebanon extends CountrySeeder
 {
-
     /**
      * Attribute that defines the language of countries
-     *
-     * @var string
      */
     public ?string $lang = 'en';
 
     /**
      * Attribute that defines the language of countries
-     *
-     * @var string
      */
     public ?string $region = 'asia';
 

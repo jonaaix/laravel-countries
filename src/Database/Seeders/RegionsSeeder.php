@@ -2,11 +2,11 @@
 
 namespace Aaix\LaravelCountries\Database\Seeders;
 
+use Aaix\LaravelCountries\Models\CountryRegion;
+use Aaix\LaravelCountries\Models\CountryRegionTranslation;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
-use Aaix\LaravelCountries\Models\CountryRegion;
-use Aaix\LaravelCountries\Models\CountryRegionTranslation;
 
 class RegionsSeeder extends Seeder
 {

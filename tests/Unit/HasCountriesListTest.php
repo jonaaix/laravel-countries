@@ -1,16 +1,16 @@
 <?php
 
-use Illuminate\Support\Collection;
 use Aaix\LaravelCountries\Database\Factories\CountryFactory;
 use Aaix\LaravelCountries\Facades\FlagEmoji;
 use Aaix\LaravelCountries\Models\Country;
+use Illuminate\Support\Collection;
 
 it('should return a list of countries with name and slugs efficiently', function () {
     foreach (range(1, 30) as $item) {
         CountryFactory::new()->create([
             'en' => [
-                'name' => fake()->country() . ' ' . rand(3, 9999),
-            ]
+                'name' => fake()->country().' '.rand(3, 9999),
+            ],
         ]);
     }
 
@@ -26,8 +26,8 @@ it('should return a list of countries with name and slugs and flags efficiently'
     foreach (range(1, 30) as $item) {
         CountryFactory::new()->create([
             'en' => [
-                'name' => fake()->country() . ' ' . rand(3, 9999),
-            ]
+                'name' => fake()->country().' '.rand(3, 9999),
+            ],
         ]);
     }
 
@@ -48,10 +48,10 @@ it('should return methods returning expected results', function ($method, $keyTy
     foreach (range(1, 30) as $item) {
         CountryFactory::new()->create([
             'en' => [
-                'name' => fake()->country() . ' ' . rand(3, 9999),
-                ]
-            ]);
-        }
+                'name' => fake()->country().' '.rand(3, 9999),
+            ],
+        ]);
+    }
 
     $list = Country::getList()->{$method}();
 
@@ -85,8 +85,8 @@ it('should return emoji methods returning expected results', function ($method, 
     foreach (range(1, 30) as $item) {
         CountryFactory::new()->create([
             'en' => [
-                'name' => fake()->country() . ' ' . rand(3, 9999),
-            ]
+                'name' => fake()->country().' '.rand(3, 9999),
+            ],
         ]);
     }
 

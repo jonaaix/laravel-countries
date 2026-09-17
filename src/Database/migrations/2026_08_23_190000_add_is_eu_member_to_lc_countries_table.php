@@ -6,12 +6,12 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-return new class() extends Migration
+return new class extends Migration
 {
     public function up(): void
     {
         Schema::table('lc_countries', function (Blueprint $table) {
-            if (!Schema::hasColumn('lc_countries', 'is_eu_member')) {
+            if (! Schema::hasColumn('lc_countries', 'is_eu_member')) {
                 $table->boolean('is_eu_member')
                     ->default(false)
                     ->after('is_visible')

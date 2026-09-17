@@ -2,10 +2,11 @@
 
 namespace Aaix\LaravelCountries\Models\Concerns;
 
-use Aaix\LaravelCountries\Facades\FlagEmoji;
 use Aaix\LaravelCountries\Models\Country;
 use Aaix\LaravelCountries\Trait\WithOnlyWhereFunctions;
 use Aaix\LaravelCountries\Trait\WithPairWhereFunctions;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 
 trait HasCountriesList
 {
@@ -15,11 +16,11 @@ trait HasCountriesList
     /**
      * Get a list of countries.
      *
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return Builder
      */
     public static function getList()
     {
-        return (new static);
+        return new static;
     }
 
     /**
@@ -28,7 +29,7 @@ trait HasCountriesList
      * This method return a list of countries with their names and slugs.
      * The list is cached for a long time to avoid to query the database too much.
      *
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return Collection
      */
     public function withNamesAndSlugs()
     {
@@ -58,7 +59,7 @@ trait HasCountriesList
      * This method return a list of countries with their names, slugs and flags.
      * The list is cached for a long time to avoid to query the database too much.
      *
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return Collection
      */
     public function withNamesSlugsAndFlags()
     {
@@ -82,5 +83,4 @@ trait HasCountriesList
             }])
             ->orderBy('name', 'asc');
     }
-
 }

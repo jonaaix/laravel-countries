@@ -5,7 +5,6 @@ use Aaix\LaravelCountries\Database\Factories\CountryRegionFactory;
 use Aaix\LaravelCountries\Models\Country;
 use Aaix\LaravelCountries\Models\CountryRegion;
 use Aaix\LaravelCountries\Models\CountryTranslation;
-use Aaix\LaravelCountries\Models\CountryRegionTranslation;
 
 /*
  * Coverage for the `scopeOrWhere*` mirror scopes. They are trivial OR-variants
@@ -122,6 +121,7 @@ function seedCountryWithTranslation(string $iso, string $name, string $slug): Co
         'name' => $name,
         'slug' => $slug,
     ]);
+
     return $country;
 }
 

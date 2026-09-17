@@ -1,12 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\App;
 use Aaix\LaravelCountries\Database\Factories\CountryFactory;
 use Aaix\LaravelCountries\Database\Factories\CountryRegionFactory;
 use Aaix\LaravelCountries\Database\Factories\CountryRegionTranslationFactory;
 use Aaix\LaravelCountries\Database\Factories\CountryTranslationFactory;
 use Aaix\LaravelCountries\Models\Country;
 use Aaix\LaravelCountries\Models\CountryRegion;
+use Illuminate\Support\Facades\App;
 
 it('should can filters countries by Name', function () {
     CountryTranslationFactory::new()->create([

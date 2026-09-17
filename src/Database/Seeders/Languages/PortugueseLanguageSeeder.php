@@ -2,12 +2,11 @@
 
 namespace Aaix\LaravelCountries\Database\Seeders\Languages;
 
-use Illuminate\Database\Seeder;
 use Aaix\LaravelCountries\Database\Seeders\Builder;
+use Illuminate\Database\Seeder;
 
 class PortugueseLanguageSeeder extends Seeder
 {
-
     /**
      * Attribute that defines the language of countries
      *

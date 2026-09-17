@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Carbon;
 use Aaix\LaravelCountries\Models\Country;
+use Illuminate\Support\Carbon;
 
 /*
  * HasConfigs is a thin wrapper around config('w-countries.*') reads.
@@ -10,7 +10,7 @@ use Aaix\LaravelCountries\Models\Country;
  */
 
 it('getConfigLocaleKey honors config override and defaults to "locale"', function () {
-    $country = new Country();
+    $country = new Country;
 
     expect($country->getConfigLocaleKey())->toBe('locale');
 
@@ -19,7 +19,7 @@ it('getConfigLocaleKey honors config override and defaults to "locale"', functio
 });
 
 it('getConfigIsCache reads the configured flag', function () {
-    $country = new Country();
+    $country = new Country;
 
     config()->set('w-countries.cache.is_cached', true);
     expect($country->getConfigIsCache())->toBeTrue();
@@ -29,7 +29,7 @@ it('getConfigIsCache reads the configured flag', function () {
 });
 
 it('getConfigPrefixCache reads the configured prefix and defaults to null', function () {
-    $country = new Country();
+    $country = new Country;
 
     expect($country->getConfigPrefixCache())->toBeNull();
 
@@ -38,19 +38,19 @@ it('getConfigPrefixCache reads the configured prefix and defaults to null', func
 });
 
 it('getConfigSmallTimeCache returns a Carbon instance', function () {
-    $country = new Country();
+    $country = new Country;
 
     expect($country->getConfigSmallTimeCache())->toBeInstanceOf(Carbon::class);
 });
 
 it('getConfigBigTimeCache returns a Carbon instance', function () {
-    $country = new Country();
+    $country = new Country;
 
     expect($country->getConfigBigTimeCache())->toBeInstanceOf(Carbon::class);
 });
 
 it('getConfigSmallTimeCache and getConfigBigTimeCache honor explicit config overrides', function () {
-    $country = new Country();
+    $country = new Country;
 
     $customSmall = Carbon::now()->addMinutes(30);
     $customBig = Carbon::now()->addYears(5);

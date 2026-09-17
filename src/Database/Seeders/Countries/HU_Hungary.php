@@ -2,23 +2,18 @@
 
 namespace Aaix\LaravelCountries\Database\Seeders\Countries;
 
-use Aaix\LaravelCountries\Database\Seeders\Builder;
 use Aaix\LaravelCountries\Abstract\CountrySeeder;
+use Aaix\LaravelCountries\Database\Seeders\Builder;
 
 class HU_Hungary extends CountrySeeder
 {
-
     /**
      * Attribute that defines the language of countries
-     *
-     * @var string
      */
     public ?string $lang = 'en';
 
     /**
      * Attribute that defines the language of countries
-     *
-     * @var string
      */
     public ?string $region = 'europe';
 
@@ -264,7 +259,6 @@ class HU_Hungary extends CountrySeeder
             // GPS formats
             'gps' => [],
         ];
-
 
         $this->geographical = json_decode($this->geographical(), true);
 

@@ -2,10 +2,11 @@
 
 namespace Aaix\LaravelCountries\Facades;
 
+use Aaix\LaravelCountries\Skeleton\SkeletonClass;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Aaix\LaravelCountries\Skeleton\SkeletonClass
+ * @see SkeletonClass
  */
 class WCountries extends Facade
 {

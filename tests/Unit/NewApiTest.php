@@ -87,15 +87,15 @@ it('falls back to fallback locale inside listInLang when a translation is missin
 });
 
 it('seeds the native_name column idempotently via NativeNamesSeeder', function () {
-    (new RegionsSeeder())->run();
-    (new DE_Germany())->run();
-    (new NativeNamesSeeder())->run();
+    (new RegionsSeeder)->run();
+    (new DE_Germany)->run();
+    (new NativeNamesSeeder)->run();
 
     $country = Country::getByCode('DE');
     expect($country->native_name)->toBe('Deutschland');
 
     $firstCount = Country::count();
-    (new NativeNamesSeeder())->run();
+    (new NativeNamesSeeder)->run();
 
     expect(Country::count())->toBe($firstCount);
     expect(Country::getByCode('DE')->native_name)->toBe('Deutschland');

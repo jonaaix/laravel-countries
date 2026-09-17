@@ -2,23 +2,18 @@
 
 namespace Aaix\LaravelCountries\Database\Seeders\Countries;
 
-use Aaix\LaravelCountries\Database\Seeders\Builder;
 use Aaix\LaravelCountries\Abstract\CountrySeeder;
+use Aaix\LaravelCountries\Database\Seeders\Builder;
 
 class GD_Grenada extends CountrySeeder
 {
-
     /**
      * Attribute that defines the language of countries
-     *
-     * @var string
      */
     public ?string $lang = 'en';
 
     /**
      * Attribute that defines the language of countries
-     *
-     * @var string
      */
     public ?string $region = 'americas';
 
@@ -250,7 +245,6 @@ class GD_Grenada extends CountrySeeder
             // Various GPS formats
             'gps' => [],
         ];
-
 
         $this->geographical = json_decode($this->geographical(), true);
 

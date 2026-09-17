@@ -2,9 +2,9 @@
 
 namespace Aaix\LaravelCountries\Models;
 
+use Aaix\LaravelCountries\Abstract\CountryModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Aaix\LaravelCountries\Abstract\CountryModel;
 
 class CountryCoordinates extends CountryModel
 {
@@ -66,8 +66,6 @@ class CountryCoordinates extends CountryModel
 
     /**
      * Get the country that owns the CountryCoordinates
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function country(): HasOne
     {

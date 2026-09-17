@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\App;
 use Aaix\LaravelCountries\Database\Factories\CountryFactory;
 use Aaix\LaravelCountries\Models\Country;
 use Aaix\LaravelCountries\Models\CountryTranslation;
+use Illuminate\Support\Facades\App;
 
 /*
  * Regressions tests for bugs inherited from the upstream codebase and

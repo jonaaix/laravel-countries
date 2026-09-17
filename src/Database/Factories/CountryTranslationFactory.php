@@ -2,13 +2,13 @@
 
 namespace Aaix\LaravelCountries\Database\Factories;
 
+use Aaix\LaravelCountries\Models\CountryTranslation;
+use App\Models\Model;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use Aaix\LaravelCountries\Database\Factories\CountryFactory;
-use Aaix\LaravelCountries\Models\CountryTranslation;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends Factory<Model>
  */
 class CountryTranslationFactory extends Factory
 {
@@ -26,7 +26,8 @@ class CountryTranslationFactory extends Factory
      */
     public function definition(): array
     {
-        $name = fake()->country() . ' ' . fake()->word() . rand(1, 9999);
+        $name = fake()->country().' '.fake()->word().rand(1, 9999);
+
         return [
             'lc_country_id' => fn () => CountryFactory::new()->create()->id,
             'name' => $name,
@@ -34,5 +35,4 @@ class CountryTranslationFactory extends Factory
             'locale' => fake()->locale(),
         ];
     }
-
 }

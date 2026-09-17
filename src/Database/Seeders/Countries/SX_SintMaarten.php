@@ -2,12 +2,13 @@
 
 namespace Aaix\LaravelCountries\Database\Seeders\Countries;
 
-use Aaix\LaravelCountries\Database\Seeders\Builder;
 use Aaix\LaravelCountries\Abstract\CountrySeeder;
+use Aaix\LaravelCountries\Database\Seeders\Builder;
 
 class SX_SintMaarten extends CountrySeeder
 {
     public ?string $lang = 'en';
+
     public ?string $region = 'americas';
 
     public function run()

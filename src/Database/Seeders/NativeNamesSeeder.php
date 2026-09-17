@@ -2,9 +2,9 @@
 
 namespace Aaix\LaravelCountries\Database\Seeders;
 
+use Aaix\LaravelCountries\Models\Country;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
-use Aaix\LaravelCountries\Models\Country;
 
 /**
  * Seeds the native_name column on lc_countries.

@@ -12,12 +12,12 @@ use Aaix\LaravelCountries\Models\CountryRegionTranslation;
 use Aaix\LaravelCountries\Models\CountryTranslation;
 
 it('seeds regions idempotently — second run keeps stable IDs and no duplicates', function () {
-    (new RegionsSeeder())->run();
+    (new RegionsSeeder)->run();
     $firstRegionIds = CountryRegion::orderBy('iso_alpha_2')->pluck('id', 'iso_alpha_2')->toArray();
     $firstRegionCount = CountryRegion::count();
     $firstTranslationCount = CountryRegionTranslation::count();
 
-    (new RegionsSeeder())->run();
+    (new RegionsSeeder)->run();
 
     expect(CountryRegion::count())->toBe($firstRegionCount);
     expect(CountryRegionTranslation::count())->toBe($firstTranslationCount);
@@ -26,8 +26,8 @@ it('seeds regions idempotently — second run keeps stable IDs and no duplicates
 });
 
 it('seeds a country idempotently — relations upsert without duplicates', function () {
-    (new RegionsSeeder())->run();
-    (new DE_Germany())->run();
+    (new RegionsSeeder)->run();
+    (new DE_Germany)->run();
 
     $firstGermanyId = Country::where('iso_alpha_2', 'DE')->value('id');
     $firstCountryCount = Country::count();
@@ -36,7 +36,7 @@ it('seeds a country idempotently — relations upsert without duplicates', funct
     $firstGeographicalCount = CountryGeographical::count();
     $firstTranslationCount = CountryTranslation::count();
 
-    (new DE_Germany())->run();
+    (new DE_Germany)->run();
 
     expect(Country::where('iso_alpha_2', 'DE')->value('id'))->toBe($firstGermanyId);
     expect(Country::count())->toBe($firstCountryCount);
@@ -47,9 +47,9 @@ it('seeds a country idempotently — relations upsert without duplicates', funct
 });
 
 it('seeds a language translation idempotently — no duplicate translations per locale', function () {
-    (new RegionsSeeder())->run();
-    (new DE_Germany())->run();
-    (new GermanLanguageSeeder())->run();
+    (new RegionsSeeder)->run();
+    (new DE_Germany)->run();
+    (new GermanLanguageSeeder)->run();
 
     $germanyId = Country::where('iso_alpha_2', 'DE')->value('id');
     $firstTotal = CountryTranslation::where('locale', 'de')->count();
@@ -57,7 +57,7 @@ it('seeds a language translation idempotently — no duplicate translations per 
         ->where('lc_country_id', $germanyId)
         ->value('id');
 
-    (new GermanLanguageSeeder())->run();
+    (new GermanLanguageSeeder)->run();
 
     expect(CountryTranslation::where('locale', 'de')->count())->toBe($firstTotal);
     expect(CountryTranslation::where('locale', 'de')->where('lc_country_id', $germanyId)->value('id'))

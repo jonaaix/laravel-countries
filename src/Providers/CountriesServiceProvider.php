@@ -21,7 +21,7 @@ class CountriesServiceProvider extends PackageServiceProvider
     public function packageRegistered()
     {
         $this->app->bind('w-countries', function ($app) {
-            return new WCountries();
+            return new WCountries;
         });
 
         $this->app->alias('laravel-countries', WCountries::class);

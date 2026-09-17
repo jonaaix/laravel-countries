@@ -2,9 +2,6 @@
 
 namespace Aaix\LaravelCountries\Models;
 
-use Astrotomic\Translatable\Translatable;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Aaix\LaravelCountries\Abstract\CountryModel;
 use Aaix\LaravelCountries\Models\Concerns\HasTranslationGlobalScope;
 use Aaix\LaravelCountries\Models\Concerns\HasVisibleGlobalScope;
@@ -13,17 +10,21 @@ use Aaix\LaravelCountries\Models\Concerns\HasWhereIsoAlpha2;
 use Aaix\LaravelCountries\Models\Concerns\HasWhereName;
 use Aaix\LaravelCountries\Models\Concerns\HasWhereSlug;
 use Aaix\LaravelCountries\Models\Concerns\VisibleAttributes;
+use Astrotomic\Translatable\Translatable;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class CountryRegion extends CountryModel
 {
     use HasFactory,
-        Translatable,
-        HasVisibleGlobalScope,
         HasTranslationGlobalScope,
-        HasWhereSlug,
-        HasWhereName,
+        HasVisibleGlobalScope,
         HasWhereIso,
         HasWhereIsoAlpha2,
+        HasWhereName,
+        HasWhereSlug,
+        Translatable,
         VisibleAttributes;
 
     public $translationModel = CountryRegionTranslation::class;
@@ -121,7 +122,7 @@ class CountryRegion extends CountryModel
     /**
      * Get the countries that are located in this region.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function countries()
     {
@@ -131,8 +132,7 @@ class CountryRegion extends CountryModel
     /**
      * Filter the query by the ICAO (International Civil Aviation Organization) region code
      *
-     * @param Builder $query
-     * @param string $icao
+     * @param  Builder  $query
      * @return Builder
      */
     public function scopeWhereICAO($query, string $icao)
@@ -143,8 +143,7 @@ class CountryRegion extends CountryModel
     /**
      * Filter the query by the ICAO (International Civil Aviation Organization) region code, adding the filter with an "or where" clause
      *
-     * @param Builder $query
-     * @param string $icao
+     * @param  Builder  $query
      * @return Builder
      */
     public function scopeOrWhereICAO($query, string $icao)
@@ -155,8 +154,7 @@ class CountryRegion extends CountryModel
     /**
      * Filter the query by the IUCN (International Union for Conservation of Nature) region code
      *
-     * @param Builder $query
-     * @param string $iucn
+     * @param  Builder  $query
      * @return Builder
      */
     public function scopeWhereIUCN($query, string $iucn)
@@ -167,8 +165,7 @@ class CountryRegion extends CountryModel
     /**
      * Filter the query by the IUCN (International Union for Conservation of Nature) region code, adding the filter with an "or where" clause
      *
-     * @param Builder $query
-     * @param string $iucn
+     * @param  Builder  $query
      * @return Builder
      */
     public function scopeOrWhereIUCN($query, string $iucn)
@@ -179,8 +176,7 @@ class CountryRegion extends CountryModel
     /**
      * Filter the query by the TDWG (Taxonomic Databases Working Group) region code
      *
-     * @param Builder $query
-     * @param string $tdwg
+     * @param  Builder  $query
      * @return Builder
      */
     public function scopeWhereTDWG($query, string $tdwg)
@@ -191,13 +187,11 @@ class CountryRegion extends CountryModel
     /**
      * Filter the query by the TDWG (Taxonomic Databases Working Group) region code, adding the filter with an "or where" clause
      *
-     * @param Builder $query
-     * @param string $tdwg
+     * @param  Builder  $query
      * @return Builder
      */
     public function scopeOrWhereTDWG($query, string $tdwg)
     {
         return $query->orWhere('tdwg', $tdwg);
     }
-
 }

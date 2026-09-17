@@ -2,8 +2,8 @@
 
 namespace Aaix\LaravelCountries\Tests;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Aaix\LaravelCountries\Providers\CountriesServiceProvider;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {

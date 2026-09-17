@@ -1,8 +1,8 @@
 <?php
 
-use Carbon\Carbon;
 use Aaix\LaravelCountries\Database\Factories\CountryFactory;
 use Aaix\LaravelCountries\Models\Country;
+use Carbon\Carbon;
 
 /*
  * All tests pin independence_day deterministically on the "noise" countries

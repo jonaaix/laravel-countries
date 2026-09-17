@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Aaix\LaravelCountries\Database\Factories\CountryFactory;
 use Aaix\LaravelCountries\Tests\TestCase;
+use Illuminate\Support\Facades\App;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +19,8 @@ uses(TestCase::class)->in(__DIR__);
 
 beforeEach(function () {
     $this->setUp();
-    \Illuminate\Support\Facades\App::setLocale('en');
-    \Aaix\LaravelCountries\Database\Factories\CountryFactory::resetSequence();
+    App::setLocale('en');
+    CountryFactory::resetSequence();
 });
 
 /*

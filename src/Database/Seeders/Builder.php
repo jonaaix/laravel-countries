@@ -2,9 +2,6 @@
 
 namespace Aaix\LaravelCountries\Database\Seeders;
 
-use Exception;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 use Aaix\LaravelCountries\Abstract\CountrySeeder;
 use Aaix\LaravelCountries\Models\Country;
 use Aaix\LaravelCountries\Models\CountryCoordinates;
@@ -13,6 +10,9 @@ use Aaix\LaravelCountries\Models\CountryGeographical;
 use Aaix\LaravelCountries\Models\CountryRegion;
 use Aaix\LaravelCountries\Models\CountryRegionTranslation;
 use Aaix\LaravelCountries\Models\CountryTranslation;
+use Exception;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class Builder
 {
@@ -149,7 +149,7 @@ class Builder
                     ->first();
 
                 if ($regionRecord === null) {
-                    throw new Exception('Region ' . $region . ' not found (expected base slug "' . $slug . '" in "en")');
+                    throw new Exception('Region '.$region.' not found (expected base slug "'.$slug.'" in "en")');
                 }
 
                 CountryRegionTranslation::updateOrCreate(

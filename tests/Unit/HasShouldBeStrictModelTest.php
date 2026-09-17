@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Database\Eloquent\Factory;
-use Illuminate\Database\Eloquent\Model;
 use Aaix\LaravelCountries\Database\Factories\CountryCoordinatesFactory;
 use Aaix\LaravelCountries\Database\Factories\CountryExtrasFactory;
 use Aaix\LaravelCountries\Database\Factories\CountryFactory;

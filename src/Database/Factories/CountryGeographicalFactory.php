@@ -2,12 +2,12 @@
 
 namespace Aaix\LaravelCountries\Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Aaix\LaravelCountries\Database\Factories\CountryFactory;
 use Aaix\LaravelCountries\Models\CountryGeographical;
+use App\Models\Model;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends Factory<Model>
  */
 class CountryGeographicalFactory extends Factory
 {
@@ -28,10 +28,10 @@ class CountryGeographicalFactory extends Factory
 
         return [
             'lc_country_id' => fn () => CountryFactory::new()->create()->id,
-            'type' =>  'FeatureCollection',
+            'type' => 'FeatureCollection',
             'features_type' => 'Feature',
-            'properties' =>  '{"cca2": "{'. fake()->languageCode() .'}"}',
-            'geometry' =>  '',
+            'properties' => '{"cca2": "{'.fake()->languageCode().'}"}',
+            'geometry' => '',
         ];
     }
 }
